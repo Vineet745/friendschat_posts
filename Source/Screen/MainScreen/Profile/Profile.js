@@ -16,6 +16,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useIsFocused} from '@react-navigation/native';
 import {auth} from '@react-native-firebase/auth'
 import { logoutuser } from '../../../Redux/Action.js/Authaction';
+import { horizontalScale } from '../../../assets/Dimension';
 
 const Profile = props => {
   // Call From Redux
@@ -138,6 +139,7 @@ const dispatch = useDispatch()
           style={{backgroundColor: 'blue'}}>
           <Text style={{color: 'white', padding: 10}}>Add Photo</Text>
         </TouchableOpacity>
+    
         <View style={Style.userText}>
           <Text style={Style.text}>Name : {name}</Text>
           <Text style={Style.text}>Email : {user.email}</Text>

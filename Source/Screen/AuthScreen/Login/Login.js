@@ -1,18 +1,14 @@
 import {View, Text, TouchableOpacity, TextInput} from 'react-native';
-import React,{useState,useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import Background from '../../../Background';
 import Style from './Style';
-import { useDispatch,useSelector } from 'react-redux';
-import { loginuser } from '../../../Redux/Action.js/Authaction';
-import { useRoute } from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {loginuser} from '../../../Redux/Action.js/Authaction';
+import {useRoute} from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import firestore from "@react-native-firebase/firestore"
-
+import firestore from '@react-native-firebase/firestore';
 
 const Login = props => {
-  
-
-
   const dispatch = useDispatch();
   // Hooks
   // State Hooks
@@ -20,23 +16,19 @@ const Login = props => {
   const [password, setPassword] = useState('');
   // const [UserId,setUserId] = useState('')
 
-
   // Handlers
 
-   const handleLogin= async(email,password)=>{
+  const handleLogin = async (email, password) => {
     try {
       // const userdata = {
       //   email:email,
       //   password:password
       // };
-      dispatch(loginuser(email,password))
+      dispatch(loginuser(email, password));
     } catch (error) {
       console.log(error);
     }
-    
-   }
-
-
+  };
 
   return (
     <Background>
@@ -51,7 +43,7 @@ const Login = props => {
           <TextInput
             style={Style.inputbox}
             value={email}
-            onChangeText={(value)=>setEmail(value)}
+            onChangeText={value => setEmail(value)}
             placeholder="Enter Your Email"></TextInput>
           <Text style={{color: 'black', marginLeft: 30, fontSize: 20}}>
             Password
@@ -59,9 +51,11 @@ const Login = props => {
           <TextInput
             style={Style.inputbox}
             value={password}
-            onChangeText={(value)=>setPassword(value)}
+            onChangeText={value => setPassword(value)}
             placeholder="Enter Your Password"></TextInput>
-          <TouchableOpacity style={Style.buttontouchable} onPress={()=>handleLogin(email,password)}>
+          <TouchableOpacity
+            style={Style.buttontouchable}
+            onPress={() => handleLogin(email, password)}>
             <Text style={{color: 'white', textAlign: 'center', fontSize: 20}}>
               Login
             </Text>

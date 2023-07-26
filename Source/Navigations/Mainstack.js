@@ -4,13 +4,14 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../Screen/MainScreen/Home/Home';
 import Add from '../Screen/MainScreen/Add/Add';
 import Profile from '../Screen/MainScreen/Profile/Profile';
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Comment from '../Screen/Comment/Comment';
 import Chat from '../Screen/Chat/Chat';
 import Message from '../Screen/Messages/Message';
 import Deletepost from '../Screen/Deletepost/Deletepost';
+import Update from '../Screen/Update';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -36,13 +37,12 @@ const HomeStack = props => {
   );
 };
 
-
 const ProfileStack = props => {
   return (
     <Stack.Navigator>
-      
       <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="Delete" component={Deletepost} />
+      <Stack.Screen name="Update" component={Update} />
     </Stack.Navigator>
   );
 };
@@ -56,13 +56,9 @@ const Mainstack = () => {
           if (route.name === 'HomeStack') {
             iconName = focused ? 'home' : 'home';
           } else if (route.name === 'ProfileStack') {
-            iconName = focused
-              ? 'user'
-              : 'user';
+            iconName = focused ? 'user' : 'user';
           } else if (route.name === 'Add') {
-            iconName = focused
-              ? 'pluscircleo'
-              : 'pluscircleo';
+            iconName = focused ? 'pluscircleo' : 'pluscircleo';
           }
 
           return <AntDesign name={iconName} size={30} color={'black'} />;
@@ -74,7 +70,11 @@ const Mainstack = () => {
         options={{headerShown: false}}
       />
       <Tab.Screen name="Add" component={Add} />
-      <Tab.Screen name="ProfileStack" component={ProfileStack} options={{headerShown:false}} />
+      <Tab.Screen
+        name="ProfileStack"
+        component={ProfileStack}
+        options={{headerShown: false}}
+      />
     </Tab.Navigator>
   );
 };

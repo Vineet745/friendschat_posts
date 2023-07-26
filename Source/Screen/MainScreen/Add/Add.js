@@ -4,7 +4,8 @@ import {
   TouchableOpacity,
   Image,
   TextInput,
-  ActivityIndicator
+  ActivityIndicator,
+  Modal
 } from 'react-native';
 import React, {useState} from 'react';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
@@ -81,7 +82,11 @@ const Add = props => {
 
   return (
     <View style={style.mainadd}>
-           {loading && (<ActivityIndicator style={{position:"absolute",alignSelf:"center",bottom:40,zIndex:999}} size={50} color="blue" animating={true}/>)} 
+      <Modal visible={loading} transparent={true} animationType="none" >
+        <View style={{ height:60,width:60, justifyContent: 'center',position:"absolute",top:340,left:150,alignItems: 'center', backgroundColor:"white",borderRadius:20 }}>
+          <ActivityIndicator size={50} color="blue" animating={true} />
+        </View>
+      </Modal> 
       <View style={style.imageselector}>
         <View style={style.imagecontainer}>
           <Image

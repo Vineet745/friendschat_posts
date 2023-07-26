@@ -8,7 +8,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Stack = createNativeStackNavigator();
 
-
 const AppStack = () => {
   const {user, error} = useSelector(state => state.auth);
   return (
